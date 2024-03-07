@@ -1,17 +1,12 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-require("./components/nova-transacao-component.js");
-require("./components/saldo-component.js");
-require("./components/extrato-component.js");
 var saldo = 3000;
 var elementoSaldo = document.querySelector(".saldo-valor .valor");
-if (elementoSaldo !== null) {
+if (elementoSaldo != null) {
     elementoSaldo.textContent = saldo.toString();
 }
-var elementoFormulario = document.querySelector(".blovk-nova-transacao form");
+var elementoFormulario = document.querySelector(".block-nova-transacao form");
 elementoFormulario.addEventListener("submit", function (event) {
     event.preventDefault();
-    if (elementoFormulario.checkValidity()) {
+    if (!elementoFormulario.checkValidity()) {
         alert("Por favor, preencha todos os campos da transação!");
         return;
     }
@@ -28,7 +23,7 @@ elementoFormulario.addEventListener("submit", function (event) {
         saldo -= valor;
     }
     else {
-        alert("Tipo de Transação de inválido!");
+        alert("Tipo de Transação é inválido!");
         return;
     }
     elementoSaldo.textContent = saldo.toString();

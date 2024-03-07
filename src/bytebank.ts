@@ -1,18 +1,15 @@
-import "./components/nova-transacao-component.js";
-import "./components/saldo-component.js";
-import "./components/extrato-component.js";
-
 let saldo = 3000;
 
+alert("teste");
 const elementoSaldo = document.querySelector(".saldo-valor .valor") as HTMLElement;
-if(elementoSaldo !== null){
+if (elementoSaldo != null) {
     elementoSaldo.textContent = saldo.toString();
 }
 
-const elementoFormulario = document.querySelector(".blovk-nova-transacao form") as HTMLFormElement;
-elementoFormulario.addEventListener("submit", function(event){
+const elementoFormulario = document.querySelector(".block-nova-transacao form") as HTMLFormElement;
+elementoFormulario.addEventListener("submit", function(event) {
     event.preventDefault();
-    if(elementoFormulario.checkValidity()){
+    if (!elementoFormulario.checkValidity()) {
         alert("Por favor, preencha todos os campos da transação!");
         return;
     }
@@ -23,26 +20,25 @@ elementoFormulario.addEventListener("submit", function(event){
 
     let tipoTransacao: string = inputTipoTransacao.value;
     let valor: number = inputValor.valueAsNumber;
-    let data: Date = new Date (inputData.value);
+    let data: Date = new Date(inputData.value);
 
-    if (tipoTransacao == "Depósito"){
+    if (tipoTransacao == "Depósito") {
         saldo += valor;
-    }else if(tipoTransacao == "Transferência" || tipoTransacao == "Pagamento de Boleto"){
+    } else if (tipoTransacao == "Transferência" || tipoTransacao == "Pagamento de Boleto") {
         saldo -= valor;
-    }else{
-        alert("Tipo de Transação de inválido!");
+    } else {
+        alert("Tipo de Transação é inválido!");
         return;
     }
-    
+
     elementoSaldo.textContent = saldo.toString();
 
     const novaTransacao = {
         tipoTransacao: tipoTransacao,
         valor: valor,
         data: data
-    }
+    };
 
     console.log(novaTransacao);
     elementoFormulario.reset();
-
 });
