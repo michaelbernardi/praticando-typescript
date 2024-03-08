@@ -1,11 +1,9 @@
 {
-    "compailerOptins": {
+    "compilerOptions": {
         "target": "ES2022",
         "outDir": "./dist/js/",
-        "noEmitiOnError": true
+        "noEmitOnError": true
     },
 
-    "include" :[
-        "./src/**/*"
-    ]
+    "include" :["./src/**/*"]
 }
