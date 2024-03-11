@@ -1,6 +1,6 @@
-import { Transacao } from "./transacao.js";
+import { Transacao } from "./Transacao.js";
 
-export type GrupoTransacao ={
+export type GrupoTransacao = {
     label: string;
     transacoes: Transacao[];
 }
